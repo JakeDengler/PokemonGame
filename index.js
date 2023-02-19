@@ -1,9 +1,11 @@
+const playerSelection = prompt("What Pokemon Type will you choose; Fire, Water, or Grass? ")
+console.log("You have choosen " + playerSelection +" as your type")
+
 function getComputerChoice() {
-    let computerchoice = ['Fire', 'Water', 'Grass' ];
-    let i = computerchoice[Math.floor(Math.random()* computerchoice.length)]
-    return console.log("The computer's choice is " + i)
+    const computerchoice = ['Fire', 'Water', 'Grass' ];
+    const type = computerchoice[Math.floor(Math.random()* computerchoice.length)]
+    return type
 }
 
-getComputerChoice.apply()
-
-
+const computerSelection = getComputerChoice();
+console.log(playerSelection, computerSelection)
