@@ -1,8 +1,14 @@
 
 function getplayerChoice(){
-    const playerSelection = prompt("What Pokemon Type will you choose; Fire, Water, or Grass? ")
-    console.log("You have choosen " + playerSelection +" as your type")
-    return playerSelection
+    var dict = {1:'fire', 2:'water', 3:'grass'};
+    const playerSelection = prompt("What Pokemon Type will you choose?Enter one of the number values below      1) Fire 2) Water 3) Grass") 
+    const type = dict[playerSelection]
+    if (playerSelection == 1||2||3) {
+        console.log("You have choosen " + type +" as your type")
+        return type
+    } else {
+        return console.log("Please refresh")
+    }
 }
 
 function getComputerChoice() {
@@ -12,7 +18,6 @@ function getComputerChoice() {
 }
 
 function playRound (){
-    playerSelection.toLowerCase();
     if (playerSelection == 'fire') {
         if (computerSelection == "fire") {
             return console.log("Fire & Fire: Draw")
@@ -41,8 +46,9 @@ function playRound (){
     } else {
         return console.log("Please refresh and enter a correct value")
     }
+}
 
 const playerSelection = getplayerChoice();
 const computerSelection = getComputerChoice();
 console.log("The computer has choosen " + computerSelection)
-console.log(playerSelection, computerSelection)
+console.log(playRound(playerSelection, computerSelection))
