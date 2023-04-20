@@ -1,3 +1,5 @@
+let playerScore = 0;
+let computerScore = 0;
 
 function getplayerChoice(){
     var dict = {1:'fire', 2:'water', 3:'grass'};
@@ -18,36 +20,48 @@ function getComputerChoice() {
 }
 
 function playRound (){
+    const playerSelection = getplayerChoice();
+    const computerSelection = getComputerChoice(); 
+
     if (playerSelection == 'fire') {
         if (computerSelection == "fire") {
-            return console.log("Fire & Fire: Draw")
+            console.log("Fire vs Fire")
+            return alert("Draw") 
         } else if (computerSelection == "water") {
-            computerpoints.push(1)
-            return console.log("Fire & Water: Computer Wins")
+            console.log("Fire vs Water")
+            computerScore += 1;
+            return alert("Comptuer Wins")
         } else {
-            playerpoints.push(1)
-            return console.log("Fire & Grass: Player Wins")
+            console.log("Fire vs Grass")
+            playerScore += 1;
+            return alert("Player Wins")
         }
 
     } else if (playerSelection == 'water') {
         if (computerSelection == "water") {
-            return console.log("Water & Water: Draw")
+            console.log("Water vs Water")
+            return alert("Draw")
         } else if (computerSelection == "fire") {
-            playerpoints.push(1)
-            return console.log("Water & Fire: Player Wins")
+            console.log("Water vs Fire")
+            playerScore += 1;
+            return alert("Player Wins")
         } else {
-            computerpoints.push(1)
-            return console.log("Water & Grass: Computer Wins")
+            console.log("Water vs Grass")
+            computerScore += 1;
+            return alert("Comptuer Wins")
         }
     } else if (playerSelection == 'grass') {
         if (computerSelection == "grass") {
-            return console.log("Grass & Grass: Draw")
+            console.log("Grass vs Grass")
+            return alert("Draw")
         } else if (computerSelection == "water") {
-            playerpoints.push(1)
-            return console.log("Grass & Water: Player Wins")
+            console.log("Grass vs Water")
+            playerScore += 1;
+            return alert("Player Wins")
         } else {
-            computerpoints.push(1)
-            return console.log("Grass & Fire: Comptuer Wins")
+            console.log("Grass vs Fire")
+            computerScore += 1;
+            return alert("Comptuer Wins")
         }
     } else {
         return console.log("Please refresh and enter a correct value")
@@ -55,19 +69,13 @@ function playRound (){
 }
 
 function playGame() {
-    for (let i = 0; i <5; i++) {
-        const playerSelection = getplayerChoice();
-        const computerSelection = getComputerChoice(); 
-        playRound(playerSelection, computerSelection);
-        return console.log((playerpoints, computerpoints))
+    while (playerScore < 5 && computerScore < 5) {
+        (playRound());
+    } if (playerScore == 5) {
+        return alert("Congratulations!!! You win!")
+    } else if (computerScore == 5) {
+        return alert("You lose :( Better luck next time!")
     }
 }
 
-const playerpoints = []
-const computerpoints = []
-const playerSelection = getplayerChoice();
-const computerSelection = getComputerChoice();
-console.log("The computer has choosen " + computerSelection)
-//console.log(playRound(playerSelection, computerSelection))
-playRound(playerSelection, computerSelection);
-console.log(playerpoints, computerpoints)
+playGame();
